@@ -49,7 +49,7 @@ public class AuthorizationFilter implements Filter {
 
         adminCommands.add("/admin-home-page");
         adminCommands.add("/admin-add-user-form");
-        adminCommands.add("/admin-add-carraige-form");
+        adminCommands.add("/admin-add-carriage-form");
         adminCommands.add("/admin-add-route-form");
         adminCommands.add("/admin-save-route-code");
         adminCommands.add("/admin-save-route-stop");
@@ -76,6 +76,9 @@ public class AuthorizationFilter implements Filter {
         adminCommands.add("/admin-delete-route-stop");
         adminCommands.add("/admin-delete-route-carriage");
         adminCommands.add("/admin-save-edit-carriage");
+        adminCommands.add("/find-canceled-tickets");
+        adminCommands.add("/admin-find-tickets-by-user-name");
+        adminCommands.add("/admin-find-tickets-by-user-email");
 
         clientCommands.add("/client-booking-seats");
         clientCommands.add("/client-tickets-payment");

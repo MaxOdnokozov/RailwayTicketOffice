@@ -1,4 +1,4 @@
-package ua.nure.odnokozov.railway.ticket.office.web.command.impl;
+package ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

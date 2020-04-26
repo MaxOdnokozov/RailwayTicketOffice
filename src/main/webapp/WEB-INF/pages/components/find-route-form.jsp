@@ -41,7 +41,7 @@
 
 				<div class="col-lg-3 col-xs-12 text-white">
 					<label for="date"><fmt:message key="find.route.label.date" /></label> <input type="date" name="date"
-						class="form-control" required>
+						class="form-control" required />
 
 				</div>
 				<div class="col-lg-3 col-xs-12 text-white">

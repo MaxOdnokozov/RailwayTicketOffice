@@ -23,8 +23,8 @@ public class TicketDaoImpl extends AbstractDao<Ticket> implements TicketDao {
 
     private static final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM tickets WHERE user_id=? AND is_paid='true'";
     private static final String SQL_SELECT_TICKET_BY_ID = "SELECT * FROM tickets WHERE id=? LIMIT 1";
-    private static final String SQL_INSERT_INTO_TICKETS = "INSERT INTO tickets(route_id, user_id, seat_id, departure_stop_id, "
-            + "arrival_stop_id, price, is_paid, date_created) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT_INTO_TICKETS = "INSERT INTO tickets(route_id, user_id, seat_id, "
+            + "departure_stop_id, arrival_stop_id, price, is_paid, date_created) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_TICKET_BY_ID = "DELETE FROM tickets WHERE id=? LIMIT 1";
     private static final String SQL_SELECT_ALL_TICKETS_BY_USER_ID_AND_ROUTE_ID = "SELECT * FROM tickets WHERE user_id=? "
             + "AND route_id=?";
@@ -32,6 +32,12 @@ public class TicketDaoImpl extends AbstractDao<Ticket> implements TicketDao {
             + "WHERE user_id=? AND route_id=? AND is_paid=? AND date_created + INTERVAL 5 MINUTE > NOW()";
     private static final String SQL_UPDATE_TICKET_STATUS_IS_PAID = "UPDATE tickets SET is_paid=? WHERE id=? "
             + "AND date_created + INTERVAL 5 MINUTE > NOW()";
+    private static final String SQL_SELECT_ALL_CANCELED_TICKETS = "SELECT * FROM tickets INNER JOIN routes "
+            + "ON routes.id = tickets.route_id WHERE is_canceled = true";
+    private static final String SQL_SELECT_ALL_BY_USER_NAME = "SELECT * FROM tickets INNER JOIN users "
+            + "ON users.id=tickets.user_id WHERE users.first_name=? AND users.last_name=?";
+    private static final String SQL_SELECT_ALL_BY_USER_EMAIL = "SELECT * FROM tickets INNER JOIN users "
+            + "ON users.id=tickets.user_id WHERE users.email=?";
 
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_ROUTE_ID = "route_id";
@@ -42,7 +48,7 @@ public class TicketDaoImpl extends AbstractDao<Ticket> implements TicketDao {
     private static final String COLUMN_ARRIVAL_STOP_ID = "arrival_stop_id";
     private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_DATE_CREATED = "date_created";
-
+    
     private ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
 
     private RouteDao routeDao = new RouteDaoImpl();
@@ -126,12 +132,6 @@ public class TicketDaoImpl extends AbstractDao<Ticket> implements TicketDao {
     }
 
     @Override
-    public boolean update(Ticket ticket) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
     public boolean delete(long ticketId) {
         LOG.trace("Deleting ticket by id");
         int updatedRow = updateDelete(SQL_DELETE_TICKET_BY_ID, ps -> ps.setLong(1, ticketId));
@@ -190,5 +190,24 @@ public class TicketDaoImpl extends AbstractDao<Ticket> implements TicketDao {
         }
         LOG.debug("Rollback of all changes - updatingRows != result.length");
         return false;
+    }
+
+    @Override
+    public List<Ticket> getAllCanceledTickets() {
+        return getAll(SQL_SELECT_ALL_CANCELED_TICKETS, getMapper());
+    }
+
+    @Override
+    public List<Ticket> getAllByUserName(String firstName, String lastName) {
+        return getAllByParameter(SQL_SELECT_ALL_BY_USER_NAME, ps -> {
+            int count = 1;
+            ps.setString(count++, firstName);
+            ps.setString(count, lastName);
+        },getMapper());
+    }
+
+    @Override
+    public List<Ticket> getAllByEmail(String email) {
+        return getAllByParameter(SQL_SELECT_ALL_BY_USER_EMAIL, ps -> ps.setString(1, email), getMapper());
     }
 }

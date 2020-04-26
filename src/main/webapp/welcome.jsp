@@ -7,6 +7,9 @@
 <tag:page>
 	<jsp:body>
 	<%@ include file="/WEB-INF/pages/components/carousel.jspf"%>
+	
+		<div class="display-4 mt-3 text-center">Find trains</div>
+	
 	<c:import url="/WEB-INF/pages/components/find-route-form.jsp" />
 
 	<c:if test="${message != null}">

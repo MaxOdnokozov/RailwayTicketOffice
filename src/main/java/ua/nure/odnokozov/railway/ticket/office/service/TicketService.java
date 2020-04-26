@@ -82,4 +82,19 @@ public class TicketService {
                 ticket -> LocalDate.now().compareTo(ticket.getRoute().getDepartureStop().getDepartureDate()) <= 0)
                 .collect(Collectors.toList());
     }
+
+    public List<TicketDTO> getAllByEmail(String email) {
+        LOG.debug("Find ticket by email");
+        return DTOConverter.toTicketsDTO(ticketDao.getAllByEmail(email));
+    }
+
+    public List<TicketDTO> getAllByName(String firstName, String lastName) {
+        LOG.debug("Find ticket by firstName=" + firstName + ", lastName=" + lastName );
+        return DTOConverter.toTicketsDTO(ticketDao.getAllByUserName(firstName, lastName));
+    }
+
+    public List<TicketDTO> getAllCanceledTickets() {
+        LOG.debug("Find ticket by name");
+        return DTOConverter.toTicketsDTO(ticketDao.getAllCanceledTickets());
+    }
 }

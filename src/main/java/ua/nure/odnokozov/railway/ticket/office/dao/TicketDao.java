@@ -12,8 +12,6 @@ public interface TicketDao {
     
     boolean create(Ticket ticket);
     
-    boolean update(Ticket ticket);
-    
     boolean delete(long ticketId);
 
     boolean createAllTicket(List<Ticket> tickets);
@@ -23,4 +21,10 @@ public interface TicketDao {
     List<Ticket> getAllByRouteIdAndUserId(long routeId, long userId, boolean isPaid);
 
     boolean updateAllByIds(List<Long> ticketsIds, boolean b);
+
+    List<Ticket> getAllCanceledTickets();
+
+    List<Ticket> getAllByUserName(String firstName, String lastName);
+
+    List<Ticket> getAllByEmail(String email);
 }

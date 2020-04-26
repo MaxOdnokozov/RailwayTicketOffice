@@ -28,7 +28,21 @@
 		<div class="alert alert-danger mt-3" role="alert">
 			${errorNotFoundUpdate}</div>
 	</c:if>
-	<div class="row w-100 mt-5">
+
+		<div class="row w-100 mt-5">
+			<div class="col-9"></div>
+			<div class="col-2">
+				<form
+					action="${pageContext.request.contextPath}/admin-add-carriage-form"
+					method="post">
+					<button type="submit" class="btn btn-outline-primary btn-block">Add
+						new</button>
+				</form>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	 
+	<div class="row w-100 mt-2">
 		<div class="col-lg-1 col-md-2 col-xs-12"></div>
 		<div class="col-lg-10 col-md-8 col-xs-12">
 

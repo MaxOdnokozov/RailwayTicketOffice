@@ -1,4 +1,4 @@
-package ua.nure.odnokozov.railway.ticket.office.web.command.impl;
+package ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -16,6 +16,8 @@
 
 <c:if test="${edit!=null}">
 
+	<div class="display-4 mt-3 text-center">Edit station</div>
+
 	<form
 		action="${pageContext.request.contextPath}/admin-save-edit-station"
 		method="post">
@@ -60,6 +62,9 @@
 </c:if>
 
 <c:if test="${add!=null}">
+	
+	<div class="display-4 mt-3 text-center">Add a new station</div>
+	
 	<form action="${pageContext.request.contextPath}/admin-add-station"
 		method="post">
 		<input type="hidden" name="stationId" value="${station.getId()}" />

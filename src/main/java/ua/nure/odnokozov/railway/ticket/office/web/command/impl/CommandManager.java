@@ -17,11 +17,13 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.A
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminAddRouteCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminAddRouteFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminCancelAddRouteCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminCancelEditRouteCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminDeleteRouteCarriageCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminDeleteRouteStopCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminDeleteRoutesCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminEditRouteFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminFindRouteCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveEditRouteCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteCarriageCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteCodeCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteStopCommand;
@@ -33,6 +35,7 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.Ad
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminEditStationFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminSaveStationCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminViewAllStationsCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.ticket.AdminFindTicketCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.client.ClientActivationEmailFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.client.ClientBookingSeatsCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.client.ClientCheckActivationCodeCommand;
@@ -71,7 +74,7 @@ public class CommandManager {
         commands.put("/admin-home-page", new AdminHomePageCommand());
         commands.put("/admin-find-routes", new AdminFindRouteCommand());
         commands.put("/admin-add-user-form", new AdminAddUserFormCommand());
-        commands.put("/admin-add-carraige-form", new AdminAddCarriageFormCommand());
+        commands.put("/admin-add-carriage-form", new AdminAddCarriageFormCommand());
         commands.put("/admin-add-route-form", new AdminAddRouteFormCommand());        
         commands.put("/admin-add-carriage", new AdminAddCarriageCommand());
         commands.put("/admin-edit-carriage-form", new AdminEditCarriageFormCommand());
@@ -97,6 +100,10 @@ public class CommandManager {
         commands.put("/admin-delete-route-stop", new AdminDeleteRouteStopCommand());
         commands.put("/admin-delete-route-carriage", new AdminDeleteRouteCarriageCommand());
         commands.put("/admin-save-edit-carriage", new AdminSaveEditCarriageCommand());
+        commands.put("find-canceled-tickets", new AdminFindTicketCommand());
+        commands.put("/find-canceled-tickets", new AdminFindTicketCommand());
+        commands.put("/admin-find-tickets-by-user-name", new AdminFindTicketCommand());
+        commands.put("/admin-find-tickets-by-user-email", new AdminFindTicketCommand());
         
         commands.put("/no-command" , new NoCommand());        
     }

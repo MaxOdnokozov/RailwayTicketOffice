@@ -24,35 +24,7 @@ Header (top area).
 						<button type="submit" class="btn btn-outline-light border-0">Home</button>
 					</form></li>
 
-				<li class="nav-item">
-					<div class="dropdown">
-						<button class="btn btn-outline-light dropdown-toggle border-0"
-							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Users</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-view-all-users">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">View
-									all users</button>
-							</form>
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-add-user-form">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Add a
-									new user</button>
-							</form>
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-find-user">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Find
-									user</button>
-							</form>
-
-						</div>
-					</div>
-
-				</li>
+				
 				<li class="nav-item">
 					<div class="dropdown">
 						<button class="btn btn-outline-light dropdown-toggle border-0"
@@ -88,7 +60,7 @@ Header (top area).
 									all models of carriages</button>
 							</form>
 							<form method="post"
-								action="${pageContext.request.contextPath}/admin-add-carraige-form">
+								action="${pageContext.request.contextPath}/admin-add-carriage-form">
 								<button type="submit"
 									class="btn btn-outline-light border-0 text-dark">Add a
 									new model of carriage</button>
@@ -127,7 +99,7 @@ Header (top area).
 							aria-haspopup="true" aria-expanded="false">Settings</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<form method="post"
-								action="${pageContext.request.contextPath}/admin-profile-settings">
+								action="${pageContext.request.contextPath}/admin-add-user-form">
 								<button type="submit"
 									class="btn btn-outline-light border-0 text-dark">Profile
 									settings</button>

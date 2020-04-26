@@ -30,5 +30,16 @@
 		<div class="col-lg-1 col-md-2 col-xs-12"></div>
 		</div>
 	</form>
+	<div class="row w-100 mt-3">
+		<div class="col-10"></div>
+		<div class="col-2 mt-3">
+			<form
+				action="${pageContext.request.contextPath}/admin-view-all-carriages"
+				method="post">
+				<button type="submit" class="btn btn-danger btn-lg">Cancel</button>
+			</form>
+		</div>
+	</div>
+	
 </jsp:body>
 </tag:page>
