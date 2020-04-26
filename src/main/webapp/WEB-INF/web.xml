@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<welcome-file-list>
+		<welcome-file>welcome.jsp</welcome-file>
+	</welcome-file-list>
+
+	<resource-ref>
+		<description>MySQL Datasource</description>
+		<res-ref-name>jdbc/railway_ticket_office_db</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+
+	<servlet>
+		<servlet-name>FrontController</servlet-name>
+		<servlet-class>ua.nure.odnokozov.railway.ticket.office.web.FrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FrontController</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>charsetEncodingFilter</filter-name>
+		<filter-class>ua.nure.odnokozov.railway.ticket.office.web.filter.CharsetEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>charsetEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<servlet-name>FrontController</servlet-name>		
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>localeFilter</filter-name>
+		<filter-class>ua.nure.odnokozov.railway.ticket.office.web.filter.LocaleFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>localeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>resourceFilter</filter-name>
+		<filter-class>ua.nure.odnokozov.railway.ticket.office.web.filter.ResourceFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>resourceFilter</filter-name>
+		<url-pattern>/static/*</url-pattern>
+		<url-pattern>/webjars/*</url-pattern>
+		<url-pattern>*.ico</url-pattern>
+		<url-pattern>/images-directory/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>authorizationFilter</filter-name>
+		<filter-class>ua.nure.odnokozov.railway.ticket.office.web.filter.AuthorizationFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>authorizationFilter</filter-name>
+		<servlet-name>FrontController</servlet-name>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>casheFilter</filter-name>
+		<filter-class>ua.nure.odnokozov.railway.ticket.office.web.filter.CasheFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>casheFilter</filter-name>
+		<servlet-name>FrontController</servlet-name>
+	</filter-mapping>
+
+
+	<listener>
+		<listener-class>ua.nure.odnokozov.railway.ticket.office.web.listener.ServletContextListenerImpl</listener-class>
+	</listener>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/pages/errors/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/pages/errors/error500.jsp</location>
+	</error-page>
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>resources</param-value>
+	</context-param>
+
+</web-app>

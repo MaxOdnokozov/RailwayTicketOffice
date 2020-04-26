@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>Custom Tag for marks</description>
+	<tlib-version>2.1</tlib-version>
+	<short-name>stationName</short-name>
+	<uri>/WEB-INF/tld/customtag</uri>
+
+	<tag>
+		<name>stationName</name>
+		<tag-class>ua.nure.odnokozov.railway.ticket.office.CustomTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>station</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>contextLanguages</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

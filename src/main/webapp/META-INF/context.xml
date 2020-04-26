@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<Context>
+
+	<Resource 
+		name="jdbc/railway_ticket_office_db"
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxTotal="100" 
+		maxIdle="30" 
+		maxWaitMillis="10000"
+		username="MaxValencio" 
+		password="3q2w1e3014179" 
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		defaultAutoCommit="false"
+		defaultTransactionIsolation="READ_COMMITTED"
+		connectionProperties="useUnicode=yes;characterEncoding=utf8;serverTimezone=UTC"
+		url="jdbc:mysql://localhost:3306/railway_ticket_office_db"
+		/>
+</Context>
