@@ -16,7 +16,7 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<form
-						action="${pageContext.request.contextPath}/admin-find-tickets-by-user-name"
+						action="${pageContext.request.contextPath}/admin-find-tickets"
 						method="post">
 							
 						

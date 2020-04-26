@@ -38,7 +38,7 @@ public class AdminAddRouteCommand implements Command {
         boolean routeIsCreated = routeService.addRoute(route);
         if(routeIsCreated) {
             removeSessionAttributes(session);
-            return PagesConstants.REDIRECT_ADMIN_HOME;
+            return PagesConstants.REDIRECT_ADMIN_SUCCESS_CREATE_ROUTE;
         }
         return PagesConstants.ADMIN_ADD_ROUTE_PAGE;
     }

@@ -97,4 +97,9 @@ public class TicketService {
         LOG.debug("Find ticket by name");
         return DTOConverter.toTicketsDTO(ticketDao.getAllCanceledTickets());
     }
+
+    public boolean deleteTicket(Long ticketId) {
+        LOG.debug("Deleting ticket id");
+        return ticketDao.delete(ticketId);
+    }
 }

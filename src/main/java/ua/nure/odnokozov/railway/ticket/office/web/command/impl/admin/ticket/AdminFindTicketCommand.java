@@ -20,7 +20,7 @@ public class AdminFindTicketCommand implements Command {
     private static final String REQUEST_LAST_NAME = "lastName";
     private static final String REQUEST_FIRST_NAME = "firstName";
     private static final String REQUEST_CANCELED = "canceled";
-    private static final String REQUEST_MESSAGE_NOT_FOUND = "messageNotFound";
+    private static final String REQUEST_MESSAGE = "message";
     private static final String REQUEST_TICKETS = "tickets";
 
     private TicketService ticketService = new TicketService();
@@ -47,12 +47,19 @@ public class AdminFindTicketCommand implements Command {
         }
         
         if (tickets == null || tickets.size() == 0) {
-            request.setAttribute(REQUEST_MESSAGE_NOT_FOUND, "Not found!");
-            return PagesConstants.ADMIN_HOME_PAGE;
+            request.setAttribute(REQUEST_MESSAGE, "Not found");
         }
         LOG.debug("Tickets was Founds");
+        setRequestAttributes(request);
         request.setAttribute(REQUEST_TICKETS, tickets);
         return PagesConstants.ADMIN_HOME_PAGE;
+    }
+    
+    private void setRequestAttributes(HttpServletRequest request) {
+        request.setAttribute(REQUEST_FIRST_NAME, request.getParameter(REQUEST_FIRST_NAME));
+        request.setAttribute(REQUEST_LAST_NAME, request.getParameter(REQUEST_LAST_NAME));
+        request.setAttribute(REQUEST_EMAIL, request.getParameter(REQUEST_EMAIL));
+        request.setAttribute(REQUEST_CANCELED, request.getParameter(REQUEST_CANCELED));
     }
 
 }

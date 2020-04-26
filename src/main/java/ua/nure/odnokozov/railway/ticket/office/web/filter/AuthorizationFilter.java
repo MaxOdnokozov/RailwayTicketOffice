@@ -76,9 +76,9 @@ public class AuthorizationFilter implements Filter {
         adminCommands.add("/admin-delete-route-stop");
         adminCommands.add("/admin-delete-route-carriage");
         adminCommands.add("/admin-save-edit-carriage");
-        adminCommands.add("/find-canceled-tickets");
-        adminCommands.add("/admin-find-tickets-by-user-name");
-        adminCommands.add("/admin-find-tickets-by-user-email");
+        adminCommands.add("/admin-find-tickets");
+        adminCommands.add("/admin-delete-ticket");
+        adminCommands.add("/admin-succes-create-route");
 
         clientCommands.add("/client-booking-seats");
         clientCommands.add("/client-tickets-payment");

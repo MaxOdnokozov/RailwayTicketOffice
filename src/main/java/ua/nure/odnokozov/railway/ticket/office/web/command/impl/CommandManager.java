@@ -27,6 +27,7 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.Admi
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteCarriageCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteCodeCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSaveRouteStopCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminSuccessCreateRouteCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminViewRoutesCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminAddStationCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminAddStationFormCommand;
@@ -35,6 +36,7 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.Ad
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminEditStationFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminSaveStationCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.station.AdminViewAllStationsCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.ticket.AdminDeleteTicketCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.ticket.AdminFindTicketCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.client.ClientActivationEmailFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.client.ClientBookingSeatsCommand;
@@ -101,9 +103,9 @@ public class CommandManager {
         commands.put("/admin-delete-route-carriage", new AdminDeleteRouteCarriageCommand());
         commands.put("/admin-save-edit-carriage", new AdminSaveEditCarriageCommand());
         commands.put("find-canceled-tickets", new AdminFindTicketCommand());
-        commands.put("/find-canceled-tickets", new AdminFindTicketCommand());
-        commands.put("/admin-find-tickets-by-user-name", new AdminFindTicketCommand());
-        commands.put("/admin-find-tickets-by-user-email", new AdminFindTicketCommand());
+        commands.put("/admin-find-tickets", new AdminFindTicketCommand());
+        commands.put("/admin-delete-ticket", new AdminDeleteTicketCommand());
+        commands.put("/admin-succes-create-route", new AdminSuccessCreateRouteCommand());
         
         commands.put("/no-command" , new NoCommand());        
     }

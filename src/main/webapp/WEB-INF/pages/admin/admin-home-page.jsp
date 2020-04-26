@@ -40,7 +40,7 @@
 			<div class="row p-2 mb-3 border border-danger rounded">
 
 				<div class="col-12 text-white"><form
-					action="${pageContext.request.contextPath}/find-canceled-tickets"
+					action="${pageContext.request.contextPath}/admin-find-tickets"
 					method="post">
 					<input type="hidden" name="canceled" value="true" />;
 					<button type="submit"
@@ -51,10 +51,13 @@
 					</button>
 				</form>
 				</div>
-			</div>
-			
-		
+			</div>		
 	</div>
+	
+			<c:if test="${message != null }">
+			<div class="alert alert-warning text-center m-5" role="alert"><h3>${message}</h3></div>
+			</c:if>
+	
 			<c:if test="${tickets != null}">
 		<div class="container-fluid">
 			<div class="row-fluid m-2">
@@ -77,7 +80,7 @@
 						<tbody class="table-striped">
 							<c:forEach items="${tickets}" var="ticket">
 								<c:if test="${ticket.getRoute().isCanceled() == true}">
-								<tr class="bg-danger text-center text-white">
+								<tr class=" text-center">
 									<td>
 										<h5 class="text-info">
 											${ticket.getRoute().getCode()}
@@ -97,7 +100,7 @@
 														</c:if>
 											</c:forEach>
 										</h5>
-										<div class="h2 text-light text-center">CANCELED</div>
+										<div class="h2 text-danger text-center">CANCELED</div>
 									</td>
 									<td>${ticket.getRoute().getDepartureStop().getDepartureDate()}</td>
 									<td>
@@ -134,7 +137,12 @@
 									<td>${ticket.getSeatNumber()}</td>
 									<td><h5>${ticket.getPrice()} hrn</h5></td>
 									<td><h5>${ticket.getCreatedDateTime().toLocalDate()}
-											${ticket.getCreatedDateTime().toLocalTime()}</h5></td>
+											${ticket.getCreatedDateTime().toLocalTime()}</h5>
+											<form action="${pageContext.request.contextPath}/admin-delete-ticket" method="post">
+									<input type="hidden" name="ticketId" value="${ticket.getId()}"/>
+									<button type="submit"
+									class="btn btn-outline-danger btn-block">Delete</button>
+								</form>	</td>
 								</tr>
 								</c:if>
 								<c:if test="${ticket.getRoute().isCanceled() != true}">
@@ -194,7 +202,14 @@
 									<td>${ticket.getSeatNumber()}</td>
 									<td><h5>${ticket.getPrice()} hrn</h5></td>
 									<td><h5>${ticket.getCreatedDateTime().toLocalDate()}
-											${ticket.getCreatedDateTime().toLocalTime()}</h5></td>
+											${ticket.getCreatedDateTime().toLocalTime()}</h5>
+											<form action="${pageContext.request.contextPath}/admin-delete-ticket" method="post">
+									<input type="hidden" name="ticketId" value="${ticket.getId()}"/>
+									<button type="submit"
+									class="btn btn-outline-danger btn-block">Delete</button>
+								</form>	
+											
+											</td>
 								</tr>
 								</c:if>
 							</c:forEach>

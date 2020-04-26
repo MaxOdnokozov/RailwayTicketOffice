@@ -24,6 +24,8 @@ public class PagesConstants {
     public static final String REDIRECT_ADMIN_VIEW_ALL_STATIONS_PAGE = "redirect:/admin-view-all-stations";
     public static final String REDIRECT_ADMIN_ADD_ROUTE = "redirect:/admin-add-route-form";
     public static final String REDIRECT_ADMIN_HOME = "redirect:/admin-home-page";
+    public static final String REDIRECT_ADMIN_FIND_TICKETS = "redirect:/admin-find-tickets";
+    public static final String REDIRECT_ADMIN_SUCCESS_CREATE_ROUTE = "redirect:/admin-succes-create-route";
 
     public static final String ADMIN_HOME_PAGE = "/WEB-INF/pages/admin/admin-home-page.jsp";
     public static final String ADMIN_ADD_USER_PAGE = "/WEB-INF/pages/admin/admin-add-user-form.jsp";
@@ -38,6 +40,7 @@ public class PagesConstants {
     public static final String ADMIN_EDIT_STATION_PAGE = "/WEB-INF/pages/admin/admin-edit-station-form.jsp";
     public static final String ADMIN_VIEW_ROUTES_PAGE = "/WEB-INF/pages/admin/admin-view-routes.jsp";
     public static final String ADMIN_EDIT_ROUTE_FORM = "/WEB-INF/pages/admin/admin-edit-route-form.jsp";
+    public static final String ADMIN_SUCCESS_CREATE_ROUTE_PAGE = "/WEB-INF/pages/admin/admin-successful-create-route.jsp";
 
     public static final String SHOW_ROUTE_STOPS_PAGE = "/WEB-INF/pages/show-route-stops.jsp";
     public static final String SHOW_ROUTE_CARRIAGES_PAGE = "/WEB-INF/pages/show-route-carriages.jsp";
