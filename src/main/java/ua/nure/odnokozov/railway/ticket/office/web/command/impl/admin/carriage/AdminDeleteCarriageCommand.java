@@ -27,25 +27,39 @@ public class AdminDeleteCarriageCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        LOG.debug("Start AdminDeleteCarriageCommand ");
+        LOG.info("Start AdminDeleteCarriageCommand ");
         long carriageId = Long.valueOf(request.getParameter(REQUEST_CARRIAGE_ID));
-        boolean isDeleted = carriageService.deleteCarriage(carriageId);
-        if (!isDeleted) {
+
+        if (!carriageService.deleteCarriage(carriageId)) {
             LOG.warn("Can't delete carriage");
             request.setAttribute(ERROR_DELETE, ERROR_DELETE);
+            return PagesConstants.REDIRECT_ADMIN_VIEW_ALL_CARRIAGES;
         }
+        LOG.debug("Carriage was deleted from database");
+        deleteImageFileFromServer(request);
+        List<Carriage> contextCarriages = removeCarriage(request, carriageId);
+        request.getServletContext().setAttribute(ApplicationConstants.CONTEXT_CARRIAGES, contextCarriages);
+        return PagesConstants.REDIRECT_ADMIN_VIEW_ALL_CARRIAGES;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Carriage> removeCarriage(HttpServletRequest request, long carriageId) {
+        ServletContext servletContext = request.getServletContext();
+        List<Carriage> contextCarriages = (List<Carriage>) servletContext
+                .getAttribute(ApplicationConstants.CONTEXT_CARRIAGES);
+        for (Carriage carriage : contextCarriages) {
+            if (carriage.getId() == carriageId) {
+                contextCarriages.remove(carriage);
+                LOG.debug("Carriage was deleted from ServletContext");
+            }
+        }
+        return contextCarriages;
+    }
+
+    private void deleteImageFileFromServer(HttpServletRequest request) {
         String removableFileName = request.getParameter(REQUEST_MODEL_IMAGE_NAME);
         ServletContext servletContext = request.getServletContext();
         String uploadImagePath = servletContext.getRealPath("") + ApplicationConstants.IMAGES_DIR;
         new File(uploadImagePath + File.separator + removableFileName).delete();
-        @SuppressWarnings("unchecked")
-        List<Carriage> contextCarriages = (List<Carriage>) servletContext.getAttribute(ApplicationConstants.CONTEXT_CARRIAGES);
-        for (Carriage carriage : contextCarriages) {
-            if (carriage.getId() == carriageId) {
-                contextCarriages.remove(carriage);
-            }
-        }
-        servletContext.setAttribute(ApplicationConstants.CONTEXT_CARRIAGES, contextCarriages);
-        return PagesConstants.REDIRECT_ADMIN_VIEW_ALL_CARRIAGES;
     }
 }

@@ -12,6 +12,7 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.A
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.AdminAddCarriageFormCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.AdminDeleteCarriageCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.AdminEditCarriageFormCommand;
+import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.AdminSaveEditCarriageCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.carriage.AdminViewAllCarriagesCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminAddRouteCommand;
 import ua.nure.odnokozov.railway.ticket.office.web.command.impl.admin.route.AdminAddRouteFormCommand;
@@ -95,6 +96,7 @@ public class CommandManager {
         commands.put("/admin-cancel-edit-route", new AdminCancelEditRouteCommand());
         commands.put("/admin-delete-route-stop", new AdminDeleteRouteStopCommand());
         commands.put("/admin-delete-route-carriage", new AdminDeleteRouteCarriageCommand());
+        commands.put("/admin-save-edit-carriage", new AdminSaveEditCarriageCommand());
         
         commands.put("/no-command" , new NoCommand());        
     }

@@ -30,6 +30,11 @@
 		value="${departureStationId}">
 </c:if>
 
+<c:if test="${carriageId != null}">
+	<input type="hidden" name="carriageId"
+		value="${carriageId}">
+</c:if>
+
 <c:if test="${routeId != null}">
 	<input type="hidden" name="routeId" value="${routeId}">
 </c:if>
@@ -56,5 +61,3 @@
 <c:if test="${stationId != null}">
 	<input type="hidden" name="stationId" value="${stationId}">
 </c:if>
-
-

@@ -16,7 +16,8 @@ public class CarriageDaoImpl extends AbstractDao<Carriage> implements CarriageDa
     private static final String SQL_SELECT_CARRIAGE_BY_ID = "SELECT * FROM carriages WHERE id=? LIMIT 1";
     private static final String SQL_SELECT_ALL_CARRIAGES = "SELECT * FROM carriages";
     private static final String SQL_INSERT_CARRIAGE = "INSERT INTO carriages VALUES(default, ?, ?, ?, ?, ?)";
-    private static final String SQL_DELETE_CARRIAGE_BY_ID = "DELETE FROM carriages WHERE id=? LIMIT 1";
+    private static final String SQL_DELETE_CARRIAGE_BY_ID = "DELETE FROM carriages WHERE NOT EXISTS (SELECT * FROM "
+            + "route_carriages WHERE carriages.id = route_carriages.carriage_id) AND id=? LIMIT 1";
     private static final String SQL_UPDATE_CARRIAGE = "UPDATE carriges Set model=?, comfort_type=?, "
             + "total_seats=? price_coefficient=? WHERE id=? LIMIT 1";
   
@@ -75,6 +76,7 @@ public class CarriageDaoImpl extends AbstractDao<Carriage> implements CarriageDa
     public boolean delete(long id) {
         LOG.debug("Deleting carriage from the database by id :: id = " + id);
         int updatedRow = updateDelete(SQL_DELETE_CARRIAGE_BY_ID, ps -> ps.setLong(1, id));
+        LOG.trace("updatedRow = " + updatedRow);
         return updatedRow == 1;
     }
 

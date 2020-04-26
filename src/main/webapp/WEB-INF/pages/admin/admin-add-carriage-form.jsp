@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="t" uri="/WEB-INF/tld/customtag.tld"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags/"%>
 
-<html>
-<c:import url="/WEB-INF/pages/components/head.jsp" />
-<body>
-	<c:import url="/WEB-INF/pages/components/header.jsp" />
-
-
-	<%-- =========================================================== --%>
+<tag:page>
+	<jsp:body>
 	<div>
 		<div class="container-fluid p-0">
 			<img src="static/img/header/eurostar-train-add-carriage-form.jpg"
@@ -66,10 +64,10 @@
 					</div>
 
 					<div class="form-group mt-3">
-						<div class="custom-file">
+						
 							<input type="file" id="modelImage" name="modelImageURL"
 								accept="image/*,image/jpeg">
-						</div>
+						
 					</div>
 				</c:if>
 
@@ -129,11 +127,5 @@
 		<div class="col-lg-1 col-md-2 col-xs-12"></div>
 	</div>
 
-	<%-- =========================================================== --%>
-
-	<div class="row-fluid h-75"></div>
-
-	<%@ include file="/WEB-INF/pages/components/footer.jspf"%>
-	<c:import url="/WEB-INF/pages/components/scripts.jsp" />
-</body>
-</html>
+</jsp:body>
+</tag:page>
