@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="t" uri="/WEB-INF/tld/customtag.tld"%>
+
 <div class="modal fade" id="addStop" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -20,7 +23,7 @@
 								name="station" id="station" required>
 								<c:forEach items="${applicationScope['contextStations']}"
 									var="routeStation">
-									<option value="${routeStation.getId()}">${routeStation.getNames().get(1)}</option>
+									<option value="${routeStation.getId()}"><t:stationName locale="${lang}" contextLanguages="${applicationScope['contextLanguages']}" station="${routeStation}"/></option>
 								</c:forEach>
 							</select>
 						</div>
@@ -37,8 +40,7 @@
 								<div class="col-5">
 									<label for="arrivalTime">Time</label><input type="time"
 										name="arrivalTime" id="arrivalTime" class="form-control"
-										required value="${sessionScope.minTime}"
-										min="${sessionScope.minTime}" max="${sessionScope.maxTime}"/>
+										required value="${sessionScope.minTime}"/>
 								</div>
 							</div>
 						</div>
@@ -57,8 +59,7 @@
 								<div class="col-5">
 									<label for="departureTime">Time</label><input type="time"
 										name="departureTime" id="departureTime" class="form-control"
-										required value="${sessionScope.minTime}"
-										min="${sessionScope.minTime}" max="${sessionScope.maxTime}"/>
+										required value="${sessionScope.minTime}"/>
 								</div>
 							</div>
 						</div>

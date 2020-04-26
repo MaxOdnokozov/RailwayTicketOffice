@@ -73,6 +73,8 @@ public class AuthorizationFilter implements Filter {
         adminCommands.add("/admin-save-edit-route");
         adminCommands.add("/admin-cancel-add-route");
         adminCommands.add("/admin-cancel-edit-route");
+        adminCommands.add("/admin-delete-route-stop");
+        adminCommands.add("/admin-delete-route-carriage");
 
         clientCommands.add("/client-booking-seats");
         clientCommands.add("/client-tickets-payment");

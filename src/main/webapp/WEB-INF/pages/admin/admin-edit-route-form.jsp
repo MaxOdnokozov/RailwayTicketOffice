@@ -26,8 +26,7 @@
 		</h3>
 	</div>
 	
-	</h5>
-		</div>
+
 	<div class="container-fluid mt-5">
 		<div class="row-fluid m-2">
 			<div class="table-responsive ">
@@ -171,7 +170,7 @@
 		</div>
 		</div>
 	</form>
-					</td>
+					
 			</div>
 		</div>
 	</div>

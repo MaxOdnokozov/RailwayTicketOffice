@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="t" uri="/WEB-INF/tld/customtag.tld"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags/"%>
 
-<html>
-<c:import url="/WEB-INF/pages/components/head.jsp" />
-<body>
-	<c:import url="/WEB-INF/pages/components/header.jsp" />
-
-
-	<%-- =========================================================== --%>
+<tag:page>
+	<jsp:body>
 	<div>
 		<div class="container-fluid p-0">
 			<img src="static/img/header/station.jpg" alt="" class="d-block w-100">
@@ -57,7 +55,7 @@
 								<td><c:forEach
 										items="${applicationScope['contextStations']}" var="station">
 										<c:if test="${station.getId() == stop.getStationId()}">
-									${station.getNames().get(1)}
+									<t:stationName locale="${lang}" contextLanguages="${applicationScope['contextLanguages']}" station="${station}"/>
 								</c:if>
 									</c:forEach></td>
 								<td>${stop.getArrivalDate()}</td>
@@ -65,7 +63,11 @@
 								<td>${stop.getDepartureDate()}</td>
 								<td>${stop.getDepartureTime()}</td>
 								<td>${stop.getPrice()}</td>
-								<td></td>
+								<td><form action="${pageContext.request.contextPath}/admin-delete-route-stop" method="post">
+									<input type="hidden" name="stopNumber" value="${sessionScope.stops.indexOf(stop)}"/>
+									<button type="submit"
+									class="btn btn-outline-danger btn-block">Delete</button>
+								</form>	</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -99,7 +101,7 @@
 						<c:forEach items="${sessionScope.routeCarriages}"
 							var="routeCarriage">
 							<tr>
-								<td>${routeCarriage.getNumber()}</td>
+								<td>${routeCarriages.indexOf(routeCarriage) + 1}</td>
 								<td>${routeCarriage.getCarriage().getModel()}</td>
 								<td>${routeCarriage.getCarriage().getComfortType()}</td>
 								<td>${routeCarriage.getCarriage().getTotalSeats()}</td>
@@ -109,7 +111,11 @@
 										<img class="img-fluid h-25"
 										src="${pageContext.request.contextPath}${applicationScope['contextImagesDir']}/${routeCarriage.getCarriage().getImage()}">
 								</a></td>
-								<td></td>
+								<td><form action="${pageContext.request.contextPath}/admin-delete-route-carriage" method="post">
+									<input type="hidden" name="routeCarriageNumber" value="${routeCarriages.indexOf(routeCarriage)}"/>
+									<button type="submit"
+									class="btn btn-outline-danger btn-block">Delete</button>
+								</form>		</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -152,12 +158,6 @@
 			</form>
 		</div>
 	</div>
-
-	<%-- =========================================================== --%>
-	<div class="row-fluid h-50"></div>
-
-
-	<%@ include file="/WEB-INF/pages/components/footer.jspf"%>
 	<c:import
 		url="/WEB-INF/pages/admin/admin-add-route-stop-modal-window.jsp" />
 	<c:import
@@ -165,5 +165,6 @@
 	<c:import
 		url="/WEB-INF/pages/admin/admin-add-route-carriage-modal-window.jsp" />
 	<c:import url="/WEB-INF/pages/components/scripts.jsp" />
-</body>
-</html>
+
+</jsp:body>
+</tag:page>
