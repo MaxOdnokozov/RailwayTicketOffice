@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" uri="/WEB-INF/tld/customtag.tld"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags/"%>
 
 <tag:page>
@@ -11,7 +12,7 @@
 					alt="" class="d-block w-100">
 		</div>
 	</div>
-	<div class="display-4 mt-3 text-center">Stations</div>
+	<div class="display-4 mt-3 text-center"><fmt:message key="nav.bar.label.stations" /></div>
 	
 	
 
@@ -21,8 +22,7 @@
 				<form
 					action="${pageContext.request.contextPath}/admin-add-station-form"
 					method="post">
-					<button type="submit" class="btn btn-outline-primary btn-block">Add
-						new</button>
+					<button type="submit" class="btn btn-outline-primary btn-block"><fmt:message key="button.add" /></button>
 				</form>
 			</div>
 			<div class="col-1"></div>
@@ -52,7 +52,7 @@
 								var="language">
 							<th>${language.getLabel().toUpperCase()}</th>
 						</c:forEach>
-						<th scope="col">Edit</th>
+						<th scope="col"><fmt:message key="button.edit" /></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -72,7 +72,7 @@
 											 <input type="hidden" name="stationId"
 												value="${station.getId()}" />
 											<button type="submit"
-												class="btn btn-outline-warning btn-block">Edit</button>
+												class="btn btn-outline-warning btn-block"><fmt:message key="button.edit" /></button>
 										</form>
 										<form
 											action="${pageContext.request.contextPath}/admin-delete-station"
@@ -80,7 +80,7 @@
 											<input type="hidden" name="stationId"
 												value="${station.getId()}" />
 											<button type="submit"
-												class="btn btn-outline-danger btn-block ml-1">Delete</button>
+												class="btn btn-outline-danger btn-block ml-1"><fmt:message key="button.delete" /></button>
 										</form>
 								</div>
 							</td>

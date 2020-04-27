@@ -12,7 +12,7 @@
 				alt="" class="d-block w-100">
 		</div>
 	</div>
-	<div class="display-4 mt-3 text-center">Add new model of carriage</div>
+	<div class="display-4 mt-3 text-center"><fmt:message key="label.add.new.model.carriage" /></div>
 	<div class="row w-100 mt-5">
 		<div class="col-lg-1 col-md-2 col-xs-12"></div>
 		<div class="col-lg-10 col-md-8 col-xs-12 m-3">
@@ -24,42 +24,38 @@
 
 					<div class="form-row">
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="modelName">Model name</label> <input type="text"
+							<label for="modelName"><fmt:message key="label.model.name" /></label> <input type="text"
 								name="modelName" class="form-control" id="modelName"
 								aria-discribdby="modelNameHelp" minlenght="2" maxlength="20"
 								required value="${modelName}"><small id="firstNameHelp"
-								class="form-text text-muted">Enter a new model name of
-								carriage. Max length of model name must be less than 20
-								characters</small>
+								class="form-text text-muted"><fmt:message key="label.model.name.help" />
+								</small>
 						</div>
 
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="totalSeats">Total seats</label> <input type="number"
+							<label for="totalSeats"><fmt:message key="label.total.seats" /></label> <input type="number"
 								name="totalSeats" class="form-control" id="totalSeats"
 								aria-discribdby="totalSeatsHelp" value="${totalSeats}" max="200"
 								step="1" required> <small id="totalSeatsHelp"
-								class="form-text text-muted">Enter total seats of the
-								carriage. Max total seats must be less than 200 seats</small>
+								class="form-text text-muted"><fmt:message key="label.total.seats.help" /></small>
 						</div>
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
 
-							<label for="comfortType">Comfort type</label> <select
+							<label for="comfortType"><fmt:message key="table.type" /></label> <select
 								class="custom-select" id="comfortType"
 								aria-discribdby="comfortTypeHelp" name="comfortType" required>
-								<option value="COMPARTMENT">Compartment</option>
-								<option value="COUCHETTE">Couchette</option>
-								<option value="SITTING">Sitting</option>
-							</select> <small id="comfortTypeHelp" class="form-text text-muted">Choose
-								comfort type of carriage</small>
+								<option value="COMPARTMENT"><fmt:message key="comfort.type.compartment" /></option>
+								<option value="COUCHETTE"><fmt:message key="comfort.type.couchette" /></option>
+								<option value="SITTING"><fmt:message key="comfort.type.sitting" /></option>
+							</select> <small id="comfortTypeHelp" class="form-text text-muted"><fmt:message key="table.type.help" /></small>
 
 						</div>
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="priceCoefficient">Price coefficient</label> <input
+							<label for="priceCoefficient"><fmt:message key="label.price.coefficient" /></label> <input
 								type="number" name="priceCoefficient" class="form-control"
 								id="priceCoefficient" aria-discribdby="priceCoefficientHelp"
 								value="${priceCoefficient}" min="1.00" step="0.01" required>
-							<small id="priceCoefficientHelp" class="form-text text-muted">Enter
-								price coefficient</small>
+							<small id="priceCoefficientHelp" class="form-text text-muted"><fmt:message key="label.price.coefficient" /></small>
 						</div>
 					</div>
 
@@ -75,42 +71,38 @@
 
 					<div class="form-row">
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="modelName">Model name</label> <input type="text"
+							<label for="modelName"><fmt:message key="label.model.name" /></label> <input type="text"
 								name="modelName" class="form-control" id="modelName"
-								aria-discribdby="modelNameHelp" placeholder="Model name"
-								minlenght="2" maxlength="20" required> <small
-								id="firstNameHelp" class="form-text text-muted">Enter a
-								new model name of carriage. Max length of model name must be
-								less than 20 characters</small>
+								aria-discribdby="modelNameHelp" minlenght="2" maxlength="20"
+								required ><small id="firstNameHelp"
+								class="form-text text-muted"><fmt:message key="label.model.name.help" />
+								</small>
 						</div>
 
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="totalSeats">Total seats</label> <input type="number"
+							<label for="totalSeats"><fmt:message key="label.total.seats" /></label> <input type="number"
 								name="totalSeats" class="form-control" id="totalSeats"
-								aria-discribdby="totalSeatsHelp" placeholder="Total seats"
-								max="200" step="1" required> <small id="totalSeatsHelp"
-								class="form-text text-muted">Enter total seats of the
-								carriage. Max total seats must be less than 200 seats</small>
+								aria-discribdby="totalSeatsHelp" max="200"
+								step="1" required> <small id="totalSeatsHelp"
+								class="form-text text-muted"><fmt:message key="label.total.seats.help" /></small>
 						</div>
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
 
-							<label for="comfortType">Comfort type</label> <select required
-								class="custom-select" id="comfortType "
-								aria-discribdby="comfortTypeHelp" name="comfortType">
-								<option value="COMPARTMENT">Compartment</option>
-								<option value="COUCHETTE">Couchette</option>
-								<option value="SITTING">Sitting</option>
-							</select> <small id="comfortTypeHelp" class="form-text text-muted">Choose
-								comfort type of carriage</small>
+							<label for="comfortType"><fmt:message key="table.type" /></label> <select
+								class="custom-select" id="comfortType"
+								aria-discribdby="comfortTypeHelp" name="comfortType" required>
+								<option value="COMPARTMENT"><fmt:message key="comfort.type.compartment" /></option>
+								<option value="COUCHETTE"><fmt:message key="comfort.type.couchette" /></option>
+								<option value="SITTING"><fmt:message key="comfort.type.sitting" /></option>
+							</select> <small id="comfortTypeHelp" class="form-text text-muted"><fmt:message key="table.type.help" /></small>
 
 						</div>
 						<div class="col-lg-3 col-md-6 col-xs-12 mb-3">
-							<label for="priceCoefficient">Price coefficient</label> <input
+							<label for="priceCoefficient"><fmt:message key="label.price.coefficient" /></label> <input
 								type="number" name="priceCoefficient" class="form-control"
 								id="priceCoefficient" aria-discribdby="priceCoefficientHelp"
-								value="1.00" min="1.00" step="0.01" required> <small
-								id="priceCoefficientHelp" class="form-text text-muted">Enter
-								price coefficient</small>
+								 min="1.00" step="0.01" required>
+							<small id="priceCoefficientHelp" class="form-text text-muted"><fmt:message key="label.price.coefficient" /></small>
 						</div>
 					</div>
 
@@ -120,7 +112,6 @@
 							accept="image/*,image/jpeg">
 
 					</div>
-
 				</c:if>
 			</form>
 		</div>
@@ -131,7 +122,7 @@
 			<form
 				action="${pageContext.request.contextPath}/admin-view-all-carriages"
 				method="post">
-				<button type="submit" class="btn btn-danger btn-lg">Cancel</button>
+				<button type="submit" class="btn btn-danger btn-lg"><fmt:message key="button.cancel" /></button>
 			</form>
 		</div>
 	</div>

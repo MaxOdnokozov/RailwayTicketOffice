@@ -24,11 +24,19 @@ public class ShowRouteSeatsCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start ShowRouteSeatsCommand");
+        if (request.getParameter(REQUEST_ROUTE_ID) == null
+                || request.getParameter(REQUEST_ROUTE_CARRIAGE_NUMBER) == null
+                || request.getParameter(REQUEST_DEPARTURE_STATION_ID) == null
+                || request.getParameter(REQUEST_ARRIVAL_STATION_ID) == null) {
+            LOG.debug("Request parameters are invalid");
+            return PagesConstants.WELCOME_PAGE;
+        }
+        
         long routeId = Long.valueOf(request.getParameter(REQUEST_ROUTE_ID));
         int routeCarriageNumber = Integer.valueOf(request.getParameter(REQUEST_ROUTE_CARRIAGE_NUMBER));
         long departureStationId = Long.valueOf(request.getParameter(REQUEST_DEPARTURE_STATION_ID));
         long arrivalStationId = Long.valueOf(request.getParameter(REQUEST_ARRIVAL_STATION_ID));
-
+        
         RouteCarriageDTO routeCarriage = routeCarriageService.getByRouteIdAndNumberAndStationsIds(routeId,
                 routeCarriageNumber, departureStationId, arrivalStationId);
         request.setAttribute(REQUEST_ROUTE_CARRIAGE, routeCarriage);
@@ -37,5 +45,4 @@ public class ShowRouteSeatsCommand implements Command {
         request.setAttribute(REQUEST_ARRIVAL_STATION_ID, arrivalStationId);
         return PagesConstants.SHOW_ROUTE_SEATS_PAGE;
     }
-
 }

@@ -33,22 +33,31 @@ public class AdminSaveRouteStopCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        LOG.info("Start AdminSaveRouteCodeCommand");
-        
+        LOG.info("Start AdminSaveRouteStopCommand");
+
+        if (request.getParameter(REQUEST_ARRIVAL_TIME) == null
+                || request.getParameter(REQUEST_ARRIVAL_DATE) == null
+                || request.getParameter(REQUEST_DEPARTURE_DATE) == null
+                || request.getParameter(REQUEST_DEPARTURE_TIME) == null
+                || request.getParameter(REQUEST_PRICE).isEmpty()) {
+            LOG.debug("Request parameter are invalid");
+            return PagesConstants.REDIRECT_ADMIN_ADD_ROUTE;
+        }
+
         HttpSession session = request.getSession();
 
         List<Stop> stops = getStops(session);
         Stop stop = getStop(request);
         stop.setStopNumber(stops.size() + 1);
         stops.add(stop);
-        
+
         String minDate = stop.getDepartureDate().toString();
         String minTime = stop.getDepartureTime().toString();
-        
+
         session.setAttribute(SESSION_MIN_DATE, minDate);
         session.setAttribute(SESSION_MIN_TIME, minTime);
         session.setAttribute(SESSION_STOPS, stops);
-        
+
         return PagesConstants.REDIRECT_ADMIN_ADD_ROUTE;
     }
 
@@ -59,8 +68,7 @@ public class AdminSaveRouteStopCommand implements Command {
     }
 
     private Stop getStop(HttpServletRequest request) {
-        return StopBuilder.getInstance()
-                .stationId(Long.valueOf(request.getParameter(REQUEST_STATION)))
+        return StopBuilder.getInstance().stationId(Long.valueOf(request.getParameter(REQUEST_STATION)))
                 .arrivalDate(LocalDate.parse(request.getParameter(REQUEST_ARRIVAL_DATE)))
                 .arrivalTime(LocalTime.parse(request.getParameter(REQUEST_ARRIVAL_TIME)))
                 .departureDate(LocalDate.parse(request.getParameter(REQUEST_DEPARTURE_DATE)))

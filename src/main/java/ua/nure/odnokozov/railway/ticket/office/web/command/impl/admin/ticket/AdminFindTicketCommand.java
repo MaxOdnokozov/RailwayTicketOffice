@@ -20,6 +20,10 @@ public class AdminFindTicketCommand implements Command {
     private static final String REQUEST_LAST_NAME = "lastName";
     private static final String REQUEST_FIRST_NAME = "firstName";
     private static final String REQUEST_CANCELED = "canceled";
+    private static final String REQUEST_REMAIL = "emailForLocale";
+    private static final String REQUEST_RLAST_NAME = "lastNameForLocale";
+    private static final String REQUEST_RFIRST_NAME = "firstNameForLocale";
+    private static final String REQUEST_RCANCELED = "canceledForLocale";
     private static final String REQUEST_MESSAGE = "message";
     private static final String REQUEST_TICKETS = "tickets";
 
@@ -50,16 +54,16 @@ public class AdminFindTicketCommand implements Command {
             request.setAttribute(REQUEST_MESSAGE, "Not found");
         }
         LOG.debug("Tickets was Founds");
-        setRequestAttributes(request);
+        setRequestAttributesForLocale(request);
         request.setAttribute(REQUEST_TICKETS, tickets);
         return PagesConstants.ADMIN_HOME_PAGE;
     }
     
-    private void setRequestAttributes(HttpServletRequest request) {
-        request.setAttribute(REQUEST_FIRST_NAME, request.getParameter(REQUEST_FIRST_NAME));
-        request.setAttribute(REQUEST_LAST_NAME, request.getParameter(REQUEST_LAST_NAME));
-        request.setAttribute(REQUEST_EMAIL, request.getParameter(REQUEST_EMAIL));
-        request.setAttribute(REQUEST_CANCELED, request.getParameter(REQUEST_CANCELED));
+    private void setRequestAttributesForLocale(HttpServletRequest request) {
+        request.setAttribute(REQUEST_RFIRST_NAME, request.getParameter(REQUEST_FIRST_NAME));
+        request.setAttribute(REQUEST_RLAST_NAME, request.getParameter(REQUEST_LAST_NAME));
+        request.setAttribute(REQUEST_REMAIL, request.getParameter(REQUEST_EMAIL));
+        request.setAttribute(REQUEST_RCANCELED, request.getParameter(REQUEST_CANCELED));
     }
 
 }

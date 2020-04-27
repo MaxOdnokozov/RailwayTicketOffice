@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<c:import url="/WEB-INF/pages/components/head.jsp" />
-<body>
-	<c:import url="/WEB-INF/pages/components/header.jsp" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags/"%>
+
+<tag:page>
+	<jsp:body>
 
 	<div class="row mt-5">
 		<div class="col-5"></div>
@@ -16,10 +15,8 @@
 	
 	<div class="row">
 		<div class="container">
-			<p class="h1 text-center text-fluid text-success">Activation Successful!<p>
+			<p class="h1 text-center text-fluid text-success"><fmt:message key="label.activation.ok" /><p>
 		</div>
 	</div>
-
-	<c:import url="/WEB-INF/pages/components/scripts.jsp" />
-</body>
-</html>
+</jsp:body>
+</tag:page>

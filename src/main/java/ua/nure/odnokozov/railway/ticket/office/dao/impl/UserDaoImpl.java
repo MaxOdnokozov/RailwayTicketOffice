@@ -25,7 +25,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String SQL_SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE email=? LIMIT 1";
     private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM users WHERE role!='ADMIN'";
     private static final String SQL_INSERT_USER = "INSERT INTO users(email, password_hash, first_name, last_name, "
-            + "date_registration) VALUES(?, ?, ?, ?, ?, ?)";
+            + "date_registration) VALUES(?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_USER = "DELETE FROM users WHERE id=? LIMIT 1";
     private static final String SQL_UPDATE_USER = "UPDATE users SET email=?, password_hash=?, first_name=?, "
             + "last_name=?, WHERE id=? LIMIT 1";

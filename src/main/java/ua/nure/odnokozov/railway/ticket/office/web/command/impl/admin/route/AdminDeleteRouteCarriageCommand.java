@@ -23,11 +23,16 @@ public class AdminDeleteRouteCarriageCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start AdminDeleteRouteCarriageCommand");
-        int routeCarriageNumber = Integer.valueOf((String) request.getParameter(REQUEST_ROUTE_CARRIAGE_ID));
-        HttpSession session = request.getSession();
-        List<RouteCarriage> routeCarriages = getRouteCarriages(session);
-        routeCarriages.remove(routeCarriageNumber);
-        session.setAttribute(SESSION_ROUTE_CARRIAGES, routeCarriages);
+
+        if (request.getParameter(REQUEST_ROUTE_CARRIAGE_ID) != null) {
+            int routeCarriageNumber = Integer.valueOf((String) request.getParameter(REQUEST_ROUTE_CARRIAGE_ID));
+            HttpSession session = request.getSession();
+            List<RouteCarriage> routeCarriages = getRouteCarriages(session);
+            routeCarriages.remove(routeCarriageNumber);
+            session.setAttribute(SESSION_ROUTE_CARRIAGES, routeCarriages);
+            return PagesConstants.REDIRECT_ADMIN_ADD_ROUTE;
+        }
+        LOG.debug("Request attribute is empty");
         return PagesConstants.REDIRECT_ADMIN_ADD_ROUTE;
     }
 

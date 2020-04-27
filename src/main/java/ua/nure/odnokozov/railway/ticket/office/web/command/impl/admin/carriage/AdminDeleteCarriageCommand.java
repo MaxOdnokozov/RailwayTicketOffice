@@ -13,6 +13,7 @@ import ua.nure.odnokozov.railway.ticket.office.constant.ApplicationConstants;
 import ua.nure.odnokozov.railway.ticket.office.constant.PagesConstants;
 import ua.nure.odnokozov.railway.ticket.office.domain.Carriage;
 import ua.nure.odnokozov.railway.ticket.office.service.CarriageService;
+import ua.nure.odnokozov.railway.ticket.office.util.Validator;
 import ua.nure.odnokozov.railway.ticket.office.web.command.Command;
 
 public class AdminDeleteCarriageCommand implements Command {
@@ -28,8 +29,14 @@ public class AdminDeleteCarriageCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start AdminDeleteCarriageCommand ");
+        
+        if(request.getParameter(REQUEST_CARRIAGE_ID) == null) {
+            LOG.warn("Request parameter is invalid");
+            request.setAttribute(ERROR_DELETE, ERROR_DELETE);
+            return PagesConstants.REDIRECT_ADMIN_VIEW_ALL_CARRIAGES;
+        }
+        
         long carriageId = Long.valueOf(request.getParameter(REQUEST_CARRIAGE_ID));
-
         if (!carriageService.deleteCarriage(carriageId)) {
             LOG.warn("Can't delete carriage");
             request.setAttribute(ERROR_DELETE, ERROR_DELETE);

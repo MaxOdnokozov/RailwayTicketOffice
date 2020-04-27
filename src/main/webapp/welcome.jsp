@@ -8,7 +8,8 @@
 	<jsp:body>
 	<%@ include file="/WEB-INF/pages/components/carousel.jspf"%>
 	
-		<div class="display-4 mt-3 text-center">Find trains</div>
+		<div class="display-4 mt-3 text-center"><fmt:message
+			key="label.find.train" /></div>
 	
 	<c:import url="/WEB-INF/pages/components/find-route-form.jsp" />
 
@@ -17,8 +18,8 @@
 			${message}</div>
 	</c:if>
 	<c:if test="${routes != null}">
-		<div class="display-3 text-center">Results</div>
-		<div class="text-left ml-5 h4">Date :
+		<div class="display-3 text-center"><fmt:message key="label.results" /></div>
+		<div class="text-left ml-5 h4"><fmt:message key="find.route.label.date" /> :
 			${routes.get(0).getDepartureStop().getDepartureDate()}</div>
 		<div class="container-fluid">
 			<div class="row-fluid m-2">
@@ -26,12 +27,12 @@
 					<table class="table table-hover">
 						<thead class="text-center">
 							<tr class="bg-info text-white ">
-								<th scope="col">Train</th>
-								<th scope="col">Departure</th>
-								<th scope="col">Arrival</th>
-								<th scope="col">Time in way</th>
-								<th scope="col">Free seats</th>
-								<th scope="col">Price</th>
+								<th scope="col"><fmt:message key="table.train" /></th>
+								<th scope="col"><fmt:message key="table.departure" /></th>
+								<th scope="col"><fmt:message key="table.arrival" /></th>
+								<th scope="col"><fmt:message key="table.time.in.way" /></th>
+								<th scope="col"><fmt:message key="table.free.seats" /></th>
+								<th scope="col"><fmt:message key="table.price" /></th>
 							</tr>
 						</thead>
 						<tbody class="table-striped">
@@ -89,14 +90,21 @@
 									</td>
 									<td>
 										<h5>${route.getTimeInWay().getHour()}
-											h
-											<c:if test="${route.getTimeInWay().getMinute() <= 9}">0${route.getTimeInWay().getMinute()} min</c:if>
-										</h5> <c:if test="${route.getTimeInWay().getMinute() > 9}">${route.getTimeInWay().getMinute()} min</c:if>
+											<fmt:message key="table.label.h" />
+											<c:if test="${route.getTimeInWay().getMinute() <= 9}">0${route.getTimeInWay().getMinute()} <fmt:message key="table.label.min" /></c:if>
+										<c:if test="${route.getTimeInWay().getMinute() > 9}">${route.getTimeInWay().getMinute()} <fmt:message key="table.label.min" /></c:if>
+										</h5> 
 
 									</td>
 									<td><c:forEach items="${route.getFreeSeats()}" var="entry">
 											<c:if test="${entry.value > 0}">
-												<h5>${entry.key.getName().toLowerCase()}:${entry.value}</h5>
+												<c:if test="${entry.key.getName().equals('COMPARTMENT')}"><h5><fmt:message key="comfort.type.compartment" />:${entry.value}</h5> </c:if>
+											</c:if>
+											<c:if test="${entry.value > 0}">
+												<c:if test="${entry.key.getName().equals('SITTING')}"><h5><fmt:message key="comfort.type.sitting" />:${entry.value}</h5> </c:if>
+											</c:if>
+											<c:if test="${entry.value > 0}">
+												<c:if test="${entry.key.getName().equals('COUCHETTE')}"><h5><fmt:message key="comfort.type.couchette" />:${entry.value}</h5> </c:if>
 											</c:if>
 										</c:forEach>
 										<form method="post"
@@ -107,12 +115,12 @@
 											<input type="hidden" name="arrivalStationId"
 													value="${route.getArrivalStop().getStationId()}">
 											<button type="submit"
-													class="btn btn-outline-primary btn-block">CHOOSE
-												SEATS</button>
+													class="btn btn-outline-primary btn-block"><fmt:message key="button.choose.seats" />
+												</button>
 										</form></td>
 
-									<td>from
-										<h5>${route.getMinPrice()}hrn</h5>
+									<td><fmt:message key="table.label.from" />
+										<h5>${route.getMinPrice()}<fmt:message key="table.label.hrn" /></h5>
 									</td>
 								</tr>
 							</c:forEach>

@@ -19,7 +19,7 @@ import ua.nure.odnokozov.railway.ticket.office.web.command.Command;
 public class AdminAddRouteCommand implements Command {
 
     private static final Logger LOG = Logger.getLogger(AdminAddRouteCommand.class);
-    
+
     private static final String SESSION_STOPS = "stops";
     private static final String SESSION_ROUTE_CODE = "code";
     private static final String SESSION_ROUTE_CARRIAGES = "routeCarriages";
@@ -33,23 +33,28 @@ public class AdminAddRouteCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start AdminAddRouteCommand");
         HttpSession session = request.getSession();
-        
-        Route route = getRoute(session);
-        boolean routeIsCreated = routeService.addRoute(route);
-        if(routeIsCreated) {
-            removeSessionAttributes(session);
-            return PagesConstants.REDIRECT_ADMIN_SUCCESS_CREATE_ROUTE;
+
+        if (session.getAttribute(SESSION_ROUTE_CODE) != null && session.getAttribute(SESSION_STOPS) != null
+                && session.getAttribute(SESSION_ROUTE_CARRIAGES) != null) {
+            Route route = getRoute(session);
+            boolean routeIsCreated = routeService.addRoute(route);
+            if (routeIsCreated) {
+                removeSessionAttributes(session);
+                LOG.debug("Creation route was success");
+                return PagesConstants.REDIRECT_ADMIN_SUCCESS_CREATE_ROUTE;
+            }
+            LOG.debug("Creation route was failed");
+            return PagesConstants.ADMIN_ADD_ROUTE_PAGE;
         }
+        LOG.debug("Session attributes are empty");
         return PagesConstants.ADMIN_ADD_ROUTE_PAGE;
     }
 
     @SuppressWarnings("unchecked")
     private Route getRoute(HttpSession session) {
-        return RouteBuilder.getInstance()
-                .code((String)session.getAttribute(SESSION_ROUTE_CODE))
+        return RouteBuilder.getInstance().code((String) session.getAttribute(SESSION_ROUTE_CODE))
                 .stops((List<Stop>) session.getAttribute(SESSION_STOPS))
-                .routeCarriages((List<RouteCarriage>) session.getAttribute(SESSION_ROUTE_CARRIAGES))
-                .build();
+                .routeCarriages((List<RouteCarriage>) session.getAttribute(SESSION_ROUTE_CARRIAGES)).build();
     }
 
     private void removeSessionAttributes(HttpSession session) {

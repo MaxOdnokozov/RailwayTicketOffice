@@ -22,7 +22,7 @@
 						class="btn btn-outline-info btn-block text-center  mt-3 mb-3" 
 						data-toggle="modal" data-target="#byUserEmail">
 						<h3>
-							By user email
+							<fmt:message key="label.find.by.email" />
 						</h3>
 					</button>
 				</div>
@@ -31,7 +31,7 @@
 						class="btn btn-outline-info btn-block text-center  mt-3 mb-3" 
 						data-toggle="modal" data-target="#byUserName">
 						<h3>
-							By user name
+							<fmt:message key="label.find.by.name" />
 						</h3>
 					</button>
 				</div>
@@ -46,7 +46,7 @@
 					<button type="submit"
 						class="btn btn-outline-success btn-block text-center  mt-3 mb-3">
 						<h3>
-							Tickets of canceled trains
+							<fmt:message key="button.canceled.tickets" />
 						</h3>
 					</button>
 				</form>
@@ -65,16 +65,16 @@
 					<table class="table table-hover">
 						<thead class="text-center">
 							<tr class="bg-info text-white ">
-								<th scope="col">Train</th>
-								<th scope="col">Date</th>								
-								<th scope="col">Departure</th>
-								<th scope="col">Arrival</th>
-								<th scope="col">Time in way</th>
-								<th scope="col">Name</th>
-								<th scope="col">Carriage №</th>
-								<th scope="col">Seat №</th>
-								<th scope="col">Price</th>
-								<th scope="col">Date creation</th>
+								<th scope="col"><fmt:message key="table.train" /></th>
+								<th scope="col"><fmt:message key="find.route.label.date" /></th>								
+								<th scope="col"><fmt:message key="table.departure" /></th>
+								<th scope="col"><fmt:message key="table.arrival" /></th>
+								<th scope="col"><fmt:message key="table.time.in.way" /></th>
+								<th scope="col"><fmt:message key="table.name" /></th>
+								<th scope="col"><fmt:message key="table.label.carriage.number" /></th>
+								<th scope="col"><fmt:message key="table.label.seat.number" /></th>
+								<th scope="col"><fmt:message key="table.price" /></th>
+								<th scope="col"><fmt:message key="table.label.date.creation" /></th>
 							</tr>
 						</thead>
 						<tbody class="table-striped">
@@ -88,7 +88,8 @@
 												var="station">
 												<c:if
 													test="${station.getId()== ticket.getRoute().getStops().get(0).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 											</c:forEach>
 											-
@@ -96,11 +97,12 @@
 												var="station">
 												<c:if
 													test="${station.getId()== ticket.getRoute().getStops().get(ticket.getRoute().getStops().size()-1).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 											</c:forEach>
 										</h5>
-										<div class="h2 text-danger text-center">CANCELED</div>
+										<div class="h2 text-danger text-center"><fmt:message key="table.label.canceled" /></div>
 									</td>
 									<td>${ticket.getRoute().getDepartureStop().getDepartureDate()}</td>
 									<td>
@@ -109,7 +111,8 @@
 											var="station">
 											<c:if
 												test="${station.getId()==ticket.getRoute().getDepartureStop().getStationId()}">
-											${station.getNames().get(1)}
+											<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 										</c:if>
 										</c:forEach>
 									</td>
@@ -119,34 +122,36 @@
 											var="station">
 											<c:if
 												test="${station.getId()==ticket.getRoute().getArrivalStop().getStationId()}">
-											${station.getNames().get(1)}
+											<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 										</c:if>
 										</c:forEach>
 									</td>
 									<td>
 										<h5>${ticket.getRoute().getTimeInWay().getHour()}
-											h
+											<fmt:message key="table.label.h" />
 											<c:if
-												test="${ticket.getRoute().getTimeInWay().getMinute() <= 9}">0${ticket.getRoute().getTimeInWay().getMinute()} min</c:if>
-										</h5> <c:if
-											test="${ticket.getRoute().getTimeInWay().getMinute() > 9}">${ticket.getRoute().getTimeInWay().getMinute()} min</c:if>
+												test="${ticket.getRoute().getTimeInWay().getMinute() <= 9}">0${ticket.getRoute().getTimeInWay().getMinute()} <fmt:message key="table.label.min"></fmt:message></c:if>
+										<c:if
+											test="${ticket.getRoute().getTimeInWay().getMinute() > 9}">${ticket.getRoute().getTimeInWay().getMinute()} <fmt:message key="table.label.min"></fmt:message></c:if>
+										</h5> 
 									</td>
 									<td>${ticket.getUser().getFirstName()}
 										${ticket.getUser().getLastName()}</td>
 									<td>${ticket.getCarriageNumber()}</td>
 									<td>${ticket.getSeatNumber()}</td>
-									<td><h5>${ticket.getPrice()} hrn</h5></td>
+									<td><h5>${ticket.getPrice()} <fmt:message key="table.label.hrn" /></h5></td>
 									<td><h5>${ticket.getCreatedDateTime().toLocalDate()}
 											${ticket.getCreatedDateTime().toLocalTime()}</h5>
 											<form action="${pageContext.request.contextPath}/admin-delete-ticket" method="post">
 									<input type="hidden" name="ticketId" value="${ticket.getId()}"/>
 									<button type="submit"
-									class="btn btn-outline-danger btn-block">Delete</button>
+									class="btn btn-danger btn-block"><fmt:message key="button.delete" /></button>
 								</form>	</td>
 								</tr>
 								</c:if>
 								<c:if test="${ticket.getRoute().isCanceled() != true}">
-								<tr class="bg-danger text-center text-white">
+								<tr >
 									<td>
 										<h5 class="text-info">
 											${ticket.getRoute().getCode()}
@@ -154,7 +159,8 @@
 												var="station">
 												<c:if
 													test="${station.getId()== ticket.getRoute().getStops().get(0).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 											</c:forEach>
 											-
@@ -162,7 +168,8 @@
 												var="station">
 												<c:if
 													test="${station.getId()== ticket.getRoute().getStops().get(ticket.getRoute().getStops().size()-1).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 											</c:forEach>
 										</h5>
@@ -174,7 +181,8 @@
 											var="station">
 											<c:if
 												test="${station.getId()==ticket.getRoute().getDepartureStop().getStationId()}">
-											${station.getNames().get(1)}
+											<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 										</c:if>
 										</c:forEach>
 									</td>
@@ -184,29 +192,32 @@
 											var="station">
 											<c:if
 												test="${station.getId()==ticket.getRoute().getArrivalStop().getStationId()}">
-											${station.getNames().get(1)}
+											<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 										</c:if>
 										</c:forEach>
 									</td>
 									<td>
 										<h5>${ticket.getRoute().getTimeInWay().getHour()}
-											h
+											<fmt:message key="table.label.h" />
 											<c:if
-												test="${ticket.getRoute().getTimeInWay().getMinute() <= 9}">0${ticket.getRoute().getTimeInWay().getMinute()} min</c:if>
-										</h5> <c:if
-											test="${ticket.getRoute().getTimeInWay().getMinute() > 9}">${ticket.getRoute().getTimeInWay().getMinute()} min</c:if>
+												test="${ticket.getRoute().getTimeInWay().getMinute() <= 9}">0${ticket.getRoute().getTimeInWay().getMinute()} <fmt:message key="table.label.min"></fmt:message></c:if>
+										<c:if
+											test="${ticket.getRoute().getTimeInWay().getMinute() > 9}">${ticket.getRoute().getTimeInWay().getMinute()} <fmt:message key="table.label.min"></fmt:message></c:if>
+										</h5> 
+									
 									</td>
 									<td>${ticket.getUser().getFirstName()}
 										${ticket.getUser().getLastName()}</td>
 									<td>${ticket.getCarriageNumber()}</td>
 									<td>${ticket.getSeatNumber()}</td>
-									<td><h5>${ticket.getPrice()} hrn</h5></td>
+									<td><h5>${ticket.getPrice()}<fmt:message key="table.label.hrn" /></h5></td>
 									<td><h5>${ticket.getCreatedDateTime().toLocalDate()}
 											${ticket.getCreatedDateTime().toLocalTime()}</h5>
 											<form action="${pageContext.request.contextPath}/admin-delete-ticket" method="post">
 									<input type="hidden" name="ticketId" value="${ticket.getId()}"/>
 									<button type="submit"
-									class="btn btn-outline-danger btn-block">Delete</button>
+									class="btn btn-outline-danger btn-block"><fmt:message key="button.delete" /></button>
 								</form>	
 											
 											</td>
@@ -220,7 +231,7 @@
 		</div>
 	</c:if>
 </div>
-	<c:import url="/WEB-INF/pages/client/find-tickets-by-user-name-modal.jsp" />
-	<c:import url="/WEB-INF/pages/client/find-tickets-by-user-email-modal.jsp" />
+	<c:import url="/WEB-INF/pages/admin/find-tickets-by-user-name-modal.jsp" />
+	<c:import url="/WEB-INF/pages/admin/find-tickets-by-user-email-modal.jsp" />
 </jsp:body>
 </tag:page>

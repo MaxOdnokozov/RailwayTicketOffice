@@ -58,6 +58,22 @@
 	<input type="hidden" name="routeCode" value="${routeCode}">
 </c:if>
 
+<c:if test="${emailForLocale != null}">
+	<input type="hidden" name="email" value="${emailForLocale}">
+</c:if>
+
+<c:if test="${canceledForLocale != null}">
+	<input type="hidden" name="canceled" value="${canceledForLocale}">
+</c:if>
+
+<c:if test="${lastNameForLocale != null}">
+	<input type="hidden" name="lastNamee" value="${lastNameForLocale}">
+</c:if>
+
+<c:if test="${firstNameForLocale != null}">
+	<input type="hidden" name="first" value="${firsNameForLocale}">
+</c:if>
+
 <c:if test="${stationId != null}">
 	<input type="hidden" name="stationId" value="${stationId}">
 </c:if>

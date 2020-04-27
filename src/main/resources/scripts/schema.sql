@@ -130,7 +130,6 @@ INSERT INTO `languages` VALUES(2, 'en');
 INSERT INTO `languages` VALUES(3, 'ua');
 
 INSERT INTO `users`VALUES(default, 'trainticketoffice.summarytask4@gmail.com', '$s0$41010$uQcWpg8tA+eJXnVmFWOVEg==$wGF0Q84sKR5ihp1DZtp4g0a9SFZfodPvccndvbNN3tg=', 'ADMIN', 'ACTIVETED', 'Admin', 'Admin', NOW());
-INSERT INTO `users`VALUES(default, 'maxvalencio@gmail.com', '$s0$41010$VqYUp+7Hp3VdAvQwRlwvqQ==$uBjbAbxBR6VsgsfFdFzcdvPvVddfTkiKJhBk2/xGlPE=', 'CLIENT', 'ACTIVETED', 'Максим', 'Oднокозов', NOW());
 
 DELIMITER $$
 USE `railway_ticket_office_db`$$

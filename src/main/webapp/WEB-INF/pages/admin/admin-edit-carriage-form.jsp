@@ -12,8 +12,7 @@
 				alt="" class="d-block w-100">
 		</div>
 	</div>
-	<div class="display-4 mt-3 text-center">Edit image of carriage
-		model</div>
+	<div class="display-4 mt-3 text-center"><fmt:message key="button.edit"/></div>
 
 
 	<form class="form-group" enctype="multipart/form-data" method="post"
@@ -36,7 +35,7 @@
 			<form
 				action="${pageContext.request.contextPath}/admin-view-all-carriages"
 				method="post">
-				<button type="submit" class="btn btn-danger btn-lg">Cancel</button>
+				<button type="submit" class="btn btn-danger btn-lg"><fmt:message key="button.cancel"/></button>
 			</form>
 		</div>
 	</div>

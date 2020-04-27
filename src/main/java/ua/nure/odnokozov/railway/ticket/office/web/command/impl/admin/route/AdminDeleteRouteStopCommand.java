@@ -23,6 +23,11 @@ public class AdminDeleteRouteStopCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start AdminDeleteRouteStopCommand");
+        
+        if(request.getParameter(REQUEST_STOP_NUMBER) ==null) {
+            LOG.debug("Request parameter is invalid");
+            return PagesConstants.REDIRECT_ADMIN_ADD_ROUTE;
+        }
         int stopNumber = Integer.valueOf((String) request.getParameter(REQUEST_STOP_NUMBER));
         HttpSession session = request.getSession();
         List<Stop> stops = getStops(session);

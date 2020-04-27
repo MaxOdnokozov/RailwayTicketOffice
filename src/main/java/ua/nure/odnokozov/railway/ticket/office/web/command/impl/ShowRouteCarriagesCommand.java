@@ -17,12 +17,19 @@ public class ShowRouteCarriagesCommand implements Command {
     private static final String REQUEST_DEPARTURE_STATION_ID = "departureStationId";
     private static final String REQUEST_ARRIVAL_STATION_ID = "arrivalStationId";
     private static final String REQUEST_ROUTE = "route";
-    
+
     private RouteService routeService = new RouteService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start ShowRouteCarriagesCommand");
+        if (request.getParameter(REQUEST_ROUTE_ID) == null 
+                || request.getParameter(REQUEST_DEPARTURE_STATION_ID) == null
+                || request.getParameter(REQUEST_ARRIVAL_STATION_ID) == null) {
+            LOG.debug("Request parameters are invalid");
+            return PagesConstants.WELCOME_PAGE;
+        }
+
         long routeId = Long.valueOf(request.getParameter(REQUEST_ROUTE_ID));
         long departureStationId = Long.valueOf(request.getParameter(REQUEST_DEPARTURE_STATION_ID));
         long arrivalStationId = Long.valueOf(request.getParameter(REQUEST_ARRIVAL_STATION_ID));

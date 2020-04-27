@@ -20,23 +20,23 @@
 								</div>
 							</c:if>
 							<div class="form-group">
-								<label for="email">Email</label>
+								<label for="email"><fmt:message key="label.email.address" /></label>
 								<c:if test="${requestScope.email == null}">
 									<input type="email"  name="email" class="form-control" id="email" aria-discribdby="emailHelp" placeholder="Example@domain.com" required>
-									<small id="passHelp" class="form-text text-muted">Enter you email address</small>	
+									<small id="passHelp" class="form-text text-muted"><fmt:message key="label.email.address.help.short" /></small>	
 								</c:if>
 								<c:if test="${requestScope.email != null}">
 									<input type="email" name="email" class="form-control" id="email" aria-discribdby="emailHelp" value="${email}">
 								</c:if>
 							</div>
 							<div class="form-group">
-								<label for="inputPassword">Password</label>
-								<input type="password" name="password" class="form-control" id="inputPassword" aria-discribdby="passHelp" placeholder="Password" required>
-								<small id="passHelp" class="form-text text-muted">Enter you password</small>
+								<label for="inputPassword"><fmt:message key="label.password" /></label>
+								<input type="password" name="password" class="form-control" id="inputPassword" aria-discribdby="passHelp" placeholder="<fmt:message key="label.password" />" required>
+								<small id="passHelp" class="form-text text-muted"><fmt:message key="label.password.help" /></small>
 							</div>
 							<div class="row">
 						
-									<button class="btn btn-primary mr-5 ml-3" type="submit">Enter</button>
+									<button class="btn btn-primary mr-5 ml-3" type="submit"><fmt:message key="button.login" /></button>
 
 							
 							<a class="link ml-5" href="#"data-toggle="modal" data-target="#registration"><fmt:message key="nav.bar.label.registration" /></a>

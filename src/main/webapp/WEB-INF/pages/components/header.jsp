@@ -2,12 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%--=========================================================================== 
-Header (top area). 
-===========================================================================--%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="welcome.jsp"><fmt:message
-			key="label.project.name" /></a>
+			key="title.project.name" /></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -21,7 +18,7 @@ Header (top area).
 
 				<li class="nav-item"><form method="post"
 						action="${pageContext.request.contextPath}/admin-home-page">
-						<button type="submit" class="btn btn-outline-light border-0">Home</button>
+						<button type="submit" class="btn btn-outline-light border-0"><fmt:message key="nav.bar.label.home" /></button>
 					</form></li>
 
 				
@@ -29,19 +26,17 @@ Header (top area).
 					<div class="dropdown">
 						<button class="btn btn-outline-light dropdown-toggle border-0"
 							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Stations</button>
+							aria-haspopup="true" aria-expanded="false"><fmt:message key="nav.bar.label.stations" /></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-view-all-stations">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">View
-									all stations</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.view.stations" /></button>
 							</form>
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-add-station-form">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Add a
-									new station</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.add.new.station" /></button>
 							</form>
 
 						</div>
@@ -51,19 +46,18 @@ Header (top area).
 					<div class="dropdown">
 						<button class="btn btn-outline-light dropdown-toggle border-0"
 							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Carriages</button>
+							aria-haspopup="true" aria-expanded="false"><fmt:message key="nav.bar.label.carriages" /></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-view-all-carriages">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">View
-									all models of carriages</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.view.carriages" /></button>
 							</form>
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-add-carriage-form">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Add a
-									new model of carriage</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.add.new.carriage" />
+									</button>
 							</form>
 
 						</div>
@@ -73,47 +67,23 @@ Header (top area).
 					<div class="dropdown">
 						<button class="btn btn-outline-light dropdown-toggle border-0"
 							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Routes</button>
+							aria-haspopup="true" aria-expanded="false"><fmt:message key="nav.bar.label.routes" /></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-view-routes">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">View
-									 routes</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.view.routes" /></button>
 							</form>
 							<form method="post"
 								action="${pageContext.request.contextPath}/admin-add-route-form">
 								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Add a
-									new rotes</button>
+									class="btn btn-outline-light border-0 text-dark"><fmt:message key="nav.bar.label.add.new.route" /></button>
 							</form>
 
 						</div>
 					</div>
 				</li>
 
-				<li class="nav-item">
-					<div class="dropdown">
-						<button class="btn btn-outline-light dropdown-toggle border-0"
-							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Settings</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-add-user-form">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Profile
-									settings</button>
-							</form>
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-system-settings">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Systems
-									settings</button>
-							</form>
-
-						</div>
-					</div>
-				</li>
 
 			</ul>
 		</c:if>
@@ -122,24 +92,9 @@ Header (top area).
 
 				<li class="nav-item"><form method="post"
 						action="${pageContext.request.contextPath}/client-home-page">
-						<button type="submit" class="btn btn-outline-light border-0">Home</button>
+						<button type="submit" class="btn btn-outline-light border-0"><fmt:message key="nav.bar.label.home" /></button>
 					</form></li>
 
-				<li class="nav-item">
-					<div class="dropdown">
-						<button class="btn btn-outline-light dropdown-toggle border-0"
-							type="button" id="dropdownMenu1" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Settings</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<form method="post"
-								action="${pageContext.request.contextPath}/admin-profile-settings">
-								<button type="submit"
-									class="btn btn-outline-light border-0 text-dark">Profile
-									settings</button>
-							</form>
-						</div>
-					</div>
-				</li>
 			</ul>
 
 		</c:if>
@@ -177,7 +132,7 @@ Header (top area).
 			<div class="ml-3">
 				<form class="form-inline my-2 my-lg-0" method="post"
 					action="${pageContext.request.contextPath}/logout">
-					<button type="submit" class="btn btn-outline-danger">Logout</button>
+					<button type="submit" class="btn btn-outline-danger"><fmt:message key="button.sign.out" /></button>
 				</form>
 			</div>
 		</c:if>

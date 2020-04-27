@@ -7,7 +7,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Find by user name</h5>
+				<h5 class="modal-title"><fmt:message key="label.find.by.name" /></h5>
 				<button class="close" type="button" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -16,23 +16,20 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<form
-						action="${pageContext.request.contextPath}/admin-find-tickets"
-						method="post">
-							
-						
+						action="${pageContext.request.contextPath}/admin-find-tickets">
 							<div class="form-group">
-								<label for="firstName">First name</label>
-								<input type="text" name="firstName" class="form-control" id="firstName" aria-discribdby="firstNameHelp" placeholder="First name" minlenght="2" required>
+								<label for="firstName"><fmt:message key="label.first.name" /></label>
+								<input type="text" name="firstName" class="form-control" id="firstName" aria-discribdby="firstNameHelp"  minlenght="2" required>
 								
 							</div>
 							<div class="form-group">
-								<label for="lastName">Last name</label>
-								<input type="text" name="lastName" class="form-control" id="lastName" aria-discribdby="lastNameHelp" placeholder="Last name" minlenght="2" required>
+								<label for="lastName"><fmt:message key="label.last.name" /></label>
+								<input type="text" name="lastName" class="form-control" id="lastName" aria-discribdby="lastNameHelp"  minlenght="2" required>
 								
 							</div>
 
 						<div class="form-group">
-							<button type="submit" class="btn btn-outline-primary btn-lg">Find</button>
+							<button type="submit" class="btn btn-outline-primary btn-lg"><fmt:message key="button.find" /></button>
 
 						</div>
 					</form>

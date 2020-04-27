@@ -88,9 +88,9 @@ public class AuthorizationFilter implements Filter {
         clientCommands.add("/client-home-page");
         clientCommands.add("/client-check-activation-code");
         clientCommands.add("/client-activation-email-form");
-        clientCommands.add("/client-check-activation-code");
         clientCommands.add("/client-successful-activation-email");
 
+        commonCommands.add("/client-check-activation-code");
         commonCommands.add("/logout");
     }
 

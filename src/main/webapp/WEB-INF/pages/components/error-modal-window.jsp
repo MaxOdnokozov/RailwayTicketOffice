@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div class="modal fade" id="errorModal" role="dialog">
 	<div class="modal-dialog modal-md" role="document">
 		<div class="modal-content">
@@ -14,33 +16,35 @@
 
 				<c:if test="${error.equals('404')}">
 					<div class="text-center">
-						<div class="display-1">Oops!</div>
-						<h1 class="text-danger">404 - The Page can't be found</h1>
+						<div class="display-1"><fmt:message key="label.oops" /></div>
+						<h1 class="text-danger"><fmt:message key="label.404" /></h1>
 					</div>
 				</c:if>
 				<c:if test="${error.equals('403')}">
 					<div>
-						<c:if test="${role == null}">
-						<div class="display-1 text-center">Oops!</div>
-							<h2 class="text-center text-danger">You must be logged in to perform
-								this action.</h2>
+						<c:if test="${user == null}">
+						<div class="display-1 text-center"><fmt:message key="label.oops" /></div>
+							<h2 class="text-center text-danger"><fmt:message key="label.403" />
+								</h2>
 							<h1 class="text-center">
-								<a href="#" data-toggle="modal" data-target="#logIn">Login</a>
+								<a href="#" data-toggle="modal" data-target="#logIn"><fmt:message key="nav.bar.label.login" /></a>
 							</h1>
 						</c:if>
-						<c:if test="${role.equals('ADMIN')}">
+						<c:if test="${user != null}">
+						<c:if test="${user.getRole().getName().equals('ADMIN')}">
 							<h2>
-								You do not have permissions to access this page<b>:(</b>
+								<fmt:message key="label.403.role" /><b>:(</b>
 							</h2>
-							<a href="${pageContext.request.contextPath}/admin-home-page">Go
-								TO Home page</a>
+							<a href="${pageContext.request.contextPath}/admin-home-page">
+								<fmt:message key="label.to.home.page" /></a>
 						</c:if>
-						<c:if test="${role.equals('CLIENT')}">
+						<c:if test="${user.getRole().getName().equals('CLIENT')}">
 							<h2>
-								You do not have permissions to access this page<b>:(</b>
+								<fmt:message key="label.403.role" /><b>:(</b>
 							</h2>
-							<a href="${pageContext.request.contextPath}/client-home-page">Go
-								TO Home page</a>
+							<a href="${pageContext.request.contextPath}/client-home-page">
+								<fmt:message key="label.to.home.page" /></a>
+						</c:if>
 						</c:if>
 					</div>
 				</c:if>

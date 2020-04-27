@@ -12,7 +12,8 @@
 			<c:forEach items="${applicationScope['contextStations']}"
 					var="station">
 				<c:if test="${station.getId()==stops.get(0).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 			</c:forEach>
 			-
@@ -20,7 +21,8 @@
 					var="station">
 				<c:if
 						test="${station.getId()==stops.get(stops.size()-1).getStationId()}">
-															${station.getNames().get(1)}
+															<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 														</c:if>
 			</c:forEach>
 		</h3>
@@ -34,12 +36,12 @@
 					<thead class="text-center">
 						<tr class="bg-info text-white ">
 							<th scope="col">№</th>
-							<th scope="col">Station</th>
-							<th scope="col">Arrival date</th>
-							<th scope="col">Arrival time</th>
-							<th scope="col">Departure date</th>
-							<th scope="col">Departure time</th>
-							<th scope="col">Edit</th>
+							<th scope="col"><fmt:message key="table.station" /></th>
+							<th scope="col"><fmt:message key="table.arrival.date" /></th>
+							<th scope="col"><fmt:message key="table.departure.date" /></th>
+							<th scope="col"><fmt:message key="table.arrival.time" /></th>
+							<th scope="col"><fmt:message key="table.departure.time" /></th>
+							<th scope="col"><fmt:message key="button.save" /></th>
 						</tr>
 					</thead>
 					<tbody class="table-striped">
@@ -52,7 +54,8 @@
 										<c:forEach items="${applicationScope['contextStations']}"
 												var="station">
 											<c:if test="${station.getId()== stop.getStationId()}">
-												${station.getNames().get(1)}
+												<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 											</c:if>
 										</c:forEach>
 									</h5>
@@ -71,7 +74,7 @@
 								</td>
 								<td>		
 								<form action="${pageContext.request.contextPath}/admin-edit-route-form" method="post">
-									<button type="submit" class="btn btn-outline-warning btn-block">Edit</button>
+									<button type="submit" class="btn btn-outline-warning btn-block"><fmt:message key="button.edit" /></button>
 									<input type="hidden" name="routeCode" value="${routeCode}"/>
 									<input type="hidden" name="routeId" value="${routeId}"/>
 									<input type="hidden" name="stopId" value="${stop.getId()}"/>
@@ -109,7 +112,7 @@
 									<h5><input type="time" name="departureTime"  class="form-control" value="${stop.getDepartureTime()}"></h5>
 								</td>
 								<td>		
-									<button type="submit" class="btn btn-outline-success btn-block">Save</button>
+									<button type="submit" class="btn btn-outline-success btn-block"><fmt:message key="button.save" /></button>
 									<input type="hidden" name="routeCode" value="${routeCode}"/>
 									<input type="hidden" name="routeId" value="${routeId}"/>
 									<input type="hidden" name="stopId" value="${stop.getId()}"/>
@@ -125,7 +128,8 @@
 										<c:forEach items="${applicationScope['contextStations']}"
 												var="station">
 											<c:if test="${station.getId()== stop.getStationId()}">
-												${station.getNames().get(1)}
+												<t:stationName station="${station}" locale="${lang}"
+																	contextLanguages="${applicationScope['contextLanguages']}" />
 											</c:if>
 										</c:forEach>
 									</h5>
@@ -144,7 +148,7 @@
 								</td>
 								<td>		
 								<form action="${pageContext.request.contextPath}/admin-edit-route-form" method="post">
-									<button type="submit" class="btn btn-outline-warning btn-block">Edit</button>
+									<button type="submit" class="btn btn-outline-warning btn-block"><fmt:message key="button.edit" /></button>
 									<input type="hidden" name="routeCode" value="${routeCode}"/>
 									<input type="hidden" name="routeId" value="${routeId}"/>
 									<input type="hidden" name="stopId" value="${stop.getId()}"/>
@@ -165,7 +169,7 @@
 		<div class="row w-100">
 			<div class="col-10"></div>
 			<div class="col-2">
-				<button type="submit" class="btn btn-outline-primary btn-block">Back</button>
+				<button type="submit" class="btn btn-outline-danger btn-block"><fmt:message key="button.cancel" /></button>
 			</div>
 		</div>
 		</div>

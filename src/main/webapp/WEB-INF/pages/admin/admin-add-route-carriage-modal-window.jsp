@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div class="modal fade" id="addCarriage" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content modal-lg">
 			<div class="modal-header">
-				<h5 class="modal-title">New stop</h5>
+				<h5 class="modal-title"><fmt:message key="table.label.carriage" /></h5>
 				<button class="close" type="button" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -26,12 +28,14 @@
 								<div class="form-group">
 									<div class="row w-100 pl-3">
 										
-											<div class="row w-100"><h5>Model: ${carriage.getModel()}</h5></div>
-											<div class="row w-100"><h5>Comfort type:
-												${carriage.getComfortType()}</h5></div>
-											<div class="row w-100"><h5>Total seats:
+											<div class="row w-100"><h5><fmt:message key="label.model" />: ${carriage.getModel()}</h5></div>
+											<div class="row w-100"><h5><fmt:message key="table.type" />:
+												<c:if test="${carriage.getComfortType().getName().equals('COMPARTMENT')}"><fmt:message key="comfort.type.compartment" /> </c:if>
+												<c:if test="${carriage.getComfortType().getName().equals('SITTING')}"><fmt:message key="comfort.type.sitting" /> </c:if>	
+												<c:if test="${carriage.getComfortType().getName().equals('COUCHETTE')}"><fmt:message key="comfort.type.couchette" /></c:if></h5></div>
+											<div class="row w-100"><h5><fmt:message key="label.total.seats" />:
 												${carriage.getTotalSeats()}</h5></div>
-											<div class="row w-100"><h5>Price coefficient:
+											<div class="row w-100"><h5><fmt:message key="label.price.coefficient" />:
 												${carriage.getPriceCoefficient()}</h5></div>							
 										<div class="row mt-3">
 											<form
@@ -39,7 +43,7 @@
 												method="post">
 												<input type="hidden" name="carriageId"
 													value="${carriage.getId()}">
-												<button class="btn btn-primary bnt-lg">Select</button>
+												<button class="btn btn-primary bnt-lg"><fmt:message key="button.select" /></button>
 											</form>
 										</div>							
 								</div>

@@ -16,6 +16,12 @@ public class AdminEditCarriageFormCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+        
+        if(request.getParameter(REQUEST_CARRIAGE_ID) == null) {
+            LOG.warn("Request parameter is invalid");
+            return PagesConstants.REDIRECT_ADMIN_VIEW_ALL_CARRIAGES;
+        }
+        
         LOG.debug("Start AdminEditCarriageFormCommand ");
         long carriageId = Long.valueOf(request.getParameter(REQUEST_CARRIAGE_ID));
         request.setAttribute(REQUEST_CARRIAGE_ID, carriageId);

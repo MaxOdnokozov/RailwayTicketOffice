@@ -16,7 +16,7 @@
 
 <c:if test="${edit!=null}">
 
-	<div class="display-4 mt-3 text-center">Edit station</div>
+	<div class="display-4 mt-3 text-center"><fmt:message key="label.edit.station" /></div>
 
 	<form
 		action="${pageContext.request.contextPath}/admin-save-edit-station"
@@ -43,7 +43,7 @@
 			<div class="row w-100">
 				<div class="col-10"></div>
 				<div class="col-2">
-					<button type="submit" class="btn btn-outline-success btn-block">Save</button>
+					<button type="submit" class="btn btn-outline-success btn-block"><fmt:message key="button.save" /></button>
 				</div>
 			</div>
 		</div>
@@ -54,7 +54,7 @@
 		<div class="row w-100">
 			<div class="col-10"></div>
 			<div class="col-2">
-				<button type="submit" class="btn btn-outline-danger btn-block">Cancel</button>
+				<button type="submit" class="btn btn-outline-danger btn-block"><fmt:message key="button.cancel" /></button>
 			</div>
 		</div>
 		</div>
@@ -63,7 +63,7 @@
 
 <c:if test="${add!=null}">
 	
-	<div class="display-4 mt-3 text-center">Add a new station</div>
+	<div class="display-4 mt-3 text-center"><fmt:message key="label.new.station" /></div>
 	
 	<form action="${pageContext.request.contextPath}/admin-add-station"
 		method="post">
@@ -84,7 +84,7 @@
 			<div class="row w-100">
 				<div class="col-10"></div>
 				<div class="col-2">
-					<button type="submit" class="btn btn-outline-primary btn-block">Add</button>
+					<button type="submit" class="btn btn-outline-primary btn-block"><fmt:message key="button.add" /></button>
 				</div>
 			</div>
 		</div>
@@ -95,7 +95,7 @@
 		<div class="row w-100">
 			<div class="col-10"></div>
 			<div class="col-2">
-				<button type="submit" class="btn btn-outline-danger btn-block">Cancel</button>
+				<button type="submit" class="btn btn-outline-danger btn-block"><fmt:message key="button.cancel" /></button>
 			</div>
 		</div>
 		</div>

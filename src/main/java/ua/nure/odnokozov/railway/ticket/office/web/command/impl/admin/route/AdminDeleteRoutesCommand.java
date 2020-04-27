@@ -22,6 +22,11 @@ public class AdminDeleteRoutesCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("Start AdminDeleteRoutesCommand");
+        if(request.getParameter(REQUEST_ROUTE_ID) == null) {
+            LOG.debug("Request parameter is invalid");
+            request.setAttribute(REQUEST_ERROR_DELETE, REQUEST_ERROR_DELETE);
+            return PagesConstants.ADMIN_VIEW_ROUTES_PAGE;
+        }
         long routeId = Long.valueOf((String) request.getParameter(REQUEST_ROUTE_ID));
         if (routeService.delete(routeId)) {            
             LOG.debug("Deleting route was success");
