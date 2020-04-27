@@ -41,7 +41,7 @@ public class LoginCommand implements Command {
         
         boolean isRegistratedUser = userService.isRegistratedUser(email);
         if (isRegistratedUser) {
-            Optional<UserDTO> user = userService.loginUser(email, password);
+            Optional<UserDTO> user = userService.validateUser(email, password);
             if (user.isPresent()) {
                 LOG.debug("User was find");
                 request.getSession().setAttribute(SESSION_USER, user.get());

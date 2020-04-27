@@ -59,7 +59,7 @@ public class UserService {
         return userDao.getByEmail(email) != null;
     }
 
-    public Optional<UserDTO> loginUser(String email, String password) {
+    public Optional<UserDTO> validateUser(String email, String password) {
         Optional<User> user = Optional.ofNullable(userDao.getByEmail(email));
         if (user.isPresent() && SCryptUtil.check(password, user.get().getPassword())) {
             return Optional.of(DTOConverter.toUserDTO(user.get()));
