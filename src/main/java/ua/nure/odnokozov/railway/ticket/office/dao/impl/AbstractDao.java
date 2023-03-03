@@ -17,7 +17,7 @@ public abstract class AbstractDao<T> {
 
     private static final Logger LOG = Logger.getLogger(AbstractDao.class);
 
-    private ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
+    private final ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
 
     public T getByParameter(String query, StatementMapper<T> statementMapper, EntityMapper<T> entityMapper) {
         T result = null;
@@ -39,7 +39,8 @@ public abstract class AbstractDao<T> {
     public List<T> getAll(String query, EntityMapper<T> mapper) {
         List<T> result = new LinkedList<>();
         try (Connection connection = connectionFactory.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+            try (PreparedStatement preparedStatement = connection
+                    .prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                     ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     T entity = mapper.map(resultSet);

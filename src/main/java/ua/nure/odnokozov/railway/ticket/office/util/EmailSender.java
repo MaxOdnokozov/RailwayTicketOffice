@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -32,7 +36,7 @@ public class EmailSender {
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientAddress));
                 message.setSubject("Activation Code");
                 message.setText(
-                        "Dear Client, Your activation ñode: " + activationCode + " \n\n Please do not spam my email!");
+                        "Dear Client, Your activation code: " + activationCode + " \n\n Please do not spam my email!");
                 Transport.send(message);
             } catch (MessagingException e) {
                LOG.error("Exception while sending activation code", e);
